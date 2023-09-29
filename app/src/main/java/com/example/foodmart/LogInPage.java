@@ -41,16 +41,6 @@ public class LogInPage extends AppCompatActivity {
         EditText editText1=findViewById(R.id.editText2);
         Button button=findViewById(R.id.Login);
         FirebaseAuth mAuth=FirebaseAuth.getInstance();
-        setContentView(R.layout.activity_log_in_page);
-        btnSignIn =findViewById(R.id.google);
-        progressDialog=new ProgressDialog(LogInPage.this);
-        progressDialog.setTitle("Creating Account");
-        progressDialog.setMessage("We are creatingg your account");
-        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.default_web_client_id))
-                .requestEmail()
-                .build();
-        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
         button.setOnClickListener(new View.OnClickListener() {
             /**
@@ -97,6 +87,16 @@ public class LogInPage extends AppCompatActivity {
                 }
             }
         });
+        btnSignIn =findViewById(R.id.google);
+        progressDialog=new ProgressDialog(LogInPage.this);
+        progressDialog.setTitle("Creating Account");
+        progressDialog.setMessage("We are creatingg your account");
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build();
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
