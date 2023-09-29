@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -35,6 +36,12 @@ public class LogInPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in_page);
+//        TextView textView=findViewById(R.id.forget);
+        EditText editText=findViewById(R.id.EMAIL);
+        EditText editText1=findViewById(R.id.editText2);
+        Button button=findViewById(R.id.Login);
+        FirebaseAuth mAuth=FirebaseAuth.getInstance();
+        setContentView(R.layout.activity_log_in_page);
         btnSignIn =findViewById(R.id.google);
         progressDialog=new ProgressDialog(LogInPage.this);
         progressDialog.setTitle("Creating Account");
@@ -45,7 +52,51 @@ public class LogInPage extends AppCompatActivity {
                 .build();
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
+        button.setOnClickListener(new View.OnClickListener() {
+            /**
+             * LogIn Page Intent Method
+             * @param view
+             */
+            @Override
+            public void onClick(View view) {
+                String mail=editText.getText().toString().trim();
+                String password=editText1.getText().toString().trim();
+                if(mail.isEmpty())
+                {
+                    editText.setError("Email Can not be Empty");
+                    editText.requestFocus();
+                }
+                else if(password.isEmpty())
+                {
+                    editText1.setError("Password Can not be Empty");
+                    editText1.requestFocus();
+                }
+                else
+                {
+                    mAuth.signInWithEmailAndPassword(mail,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        /**
+                         * if user is Authorized the method Takes user to LogIn Page.
+                         * @param task
+                         */
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if(task.isSuccessful())
+                            {
+                                Intent intent=new Intent(LogInPage.this,homee.class);
+                                startActivity(intent);
+                                finish();
+                            }
+                            else
+                            {
+                                Toast.makeText(LogInPage.this, "Log in Error: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            }
 
+                        }
+                    });
+
+                }
+            }
+        });
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
