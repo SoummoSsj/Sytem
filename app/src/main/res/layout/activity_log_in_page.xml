@@ -92,43 +92,18 @@
         android:id="@+id/google"
         android:layout_width="253dp"
         android:layout_height="48dp"
-        android:backgroundTint="#72FF5055"
-        android:text="Google"
-        android:textColor="@android:color/white"
+        android:backgroundTint="#72FDFDFD"
+        android:text="Continue with Google"
+        android:textColor="@color/purple_500"
         app:cornerRadius="50dp"
+        app:icon="@drawable/google"
+        app:iconTint="@null"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Login"
-        app:layout_constraintVertical_bias="0.156" />
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="86dp"
-        android:layout_height="69dp"
-        app:layout_constraintBottom_toTopOf="@+id/email"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.458"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.718"
-        app:srcCompat="@drawable/heart" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="120dp"
-        android:layout_height="26dp"
-        android:text="CardiacRecorder"
-        android:textColor="@color/black"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toTopOf="@+id/email"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2"
-        app:layout_constraintVertical_bias="0.588" />
-
-
+        app:layout_constraintVertical_bias="0.288" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
